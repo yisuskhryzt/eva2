@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Reserva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Estilos personalizados del restaurante -->
+    <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .navbar-brand {
+            color: #4facfe !important;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .badge-profile {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar fija -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" th:href="@{/cliente/dashboard/{id}(id=${cliente.id})}">
+                <i class="bi bi-shop-window"></i> Sistema de Reservas
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item me-3">
+                        <span class="badge badge-profile">
+                            <i class="bi bi-person-circle"></i> <span th:text="${cliente.nombre}">Cliente</span>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary btn-sm me-2" th:href="@{/cliente/dashboard/{id}(id=${cliente.id})}">
+                            <i class="bi bi-speedometer2"></i> Mi Panel
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger btn-sm" th:href="@{/logout}">
+                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="card" style="max-width: 700px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <div class="card-header text-center py-4" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 20px 20px 0 0;">
+                <div style="font-size: 3rem; margin-bottom: 10px;">
+                    <i class="bi bi-calendar-plus"></i>
+                </div>
+                <h1 class="mb-1">Nueva Reserva</h1>
+                <p class="mb-0">Reserva tu mesa, <span th:text="${cliente.nombre}">Cliente</span></p>
+            </div>
+            <div class="card-body p-4">
+                <!-- Mensajes Flash -->
+                <div th:if="${mensaje}" th:class="'alert alert-' + ${tipoMensaje} + ' alert-dismissible fade show mb-4'" role="alert">
+                    <i class="bi" th:classappend="${tipoMensaje == 'success' ? 'bi-check-circle' : (tipoMensaje == 'danger' ? 'bi-exclamation-triangle' : 'bi-info-circle')}"></i>
+                    <span th:text="${mensaje}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+
+                <form th:action="@{/reservas/guardar-cliente/{id}(id=${cliente.id})}" method="post">
+                    
+                    <div class="mb-4">
+                        <label for="mesaId" class="form-label">
+                            <i class="bi bi-table"></i> Seleccionar Mesa
+                        </label>
+                        <select class="form-control" id="mesaId" name="mesaId" required>
+                            <option value="">-- Seleccione una mesa --</option>
+                            <option th:each="mesa : ${mesas}" 
+                                    th:value="${mesa.id}" 
+                                    th:text="'Mesa #' + ${mesa.numero} + ' - Capacidad: ' + ${mesa.capacidad} + ' personas'">
+                                Mesa #1 - Capacidad: 4 personas
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="fechaHora" class="form-label">
+                            <i class="bi bi-calendar-event"></i> Fecha y Hora de la Reserva
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-calendar-check"></i>
+                            </span>
+                            <input type="datetime-local" 
+                                   class="form-control" 
+                                   id="fechaHora" 
+                                   name="fechaHora" 
+                                   required>
+                        </div>
+                        <small class="text-muted">
+                            <i class="bi bi-info-circle"></i> Selecciona fecha y hora de tu reserva (máximo 3 meses adelante)
+                        </small>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border: none; border-radius: 25px; padding: 12px; font-weight: 600;">
+                            <i class="bi bi-check-circle"></i> Confirmar Reserva
+                        </button>
+                        <a th:href="@{/cliente/dashboard/{id}(id=${cliente.id})}" class="btn btn-outline-secondary btn-lg" style="border-radius: 25px;">
+                            <i class="bi bi-arrow-left"></i> Volver a Mi Panel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Establecer fecha mínima como hoy
+        var today = new Date();
+        today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+        document.getElementById('fechaHora').min = today.toISOString().slice(0, 16);
+        
+        // Establecer fecha máxima como 3 meses adelante
+        var maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 3);
+        maxDate.setMinutes(maxDate.getMinutes() - maxDate.getTimezoneOffset());
+        document.getElementById('fechaHora').max = maxDate.toISOString().slice(0, 16);
+    </script>
+</body>
+</html>

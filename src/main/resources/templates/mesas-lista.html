@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mesas - Restaurante</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Estilos personalizados del restaurante -->
+    <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .navbar-brand {
+            color: #4facfe !important;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .badge-profile {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar fija -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" th:href="@{/admin/dashboard}">
+                <i class="bi bi-shop-window"></i> Sistema de Reservas
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item me-3">
+                        <span class="badge badge-profile">
+                            <i class="bi bi-person-badge-fill"></i> Administrador
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary btn-sm me-2" th:href="@{/admin/dashboard}">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger btn-sm" th:href="@{/logout}">
+                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <!-- Mensajes Flash -->
+        <div th:if="${mensaje}" th:class="'alert alert-' + ${tipoMensaje} + ' alert-dismissible fade show'" role="alert">
+            <i class="bi" th:classappend="${tipoMensaje == 'success' ? 'bi-check-circle' : (tipoMensaje == 'danger' ? 'bi-exclamation-triangle' : 'bi-info-circle')}"></i>
+            <span th:text="${mensaje}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="card" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <div class="card-header text-center py-4" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 20px 20px 0 0;">
+                <div style="font-size: 3rem; margin-bottom: 10px;">
+                    <i class="bi bi-table"></i>
+                </div>
+                <h1 class="mb-1">Mesas del Restaurante</h1>
+                <p class="mb-0">Gestión de mesas</p>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0" style="color: #4facfe;">
+                        <i class="bi bi-list-ul"></i> Lista de Mesas
+                    </h5>
+                    <a th:href="@{/mesas/nuevo}" class="btn-add">
+                        <i class="bi bi-plus-circle"></i> Nueva Mesa
+                    </a>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"><i class="bi bi-hash"></i> Número Mesa</th>
+                                <th scope="col"><i class="bi bi-people"></i> Capacidad</th>
+                                <th scope="col"><i class="bi bi-check-circle"></i> Estado</th>
+                                <th scope="col" class="text-center"><i class="bi bi-gear"></i> Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="mesa, iterStat : ${mesas}">
+                                <th scope="row" th:text="${iterStat.count}">1</th>
+                                <td><strong th:text="${mesa.numero}">1</strong></td>
+                                <td><i class="bi bi-people-fill"></i> <span th:text="${mesa.capacidad} + ' personas'">4 personas</span></td>
+                                <td>
+                                    <span th:if="${mesa.disponible}" class="badge bg-success">
+                                        <i class="bi bi-check-circle"></i> Disponible
+                                    </span>
+                                    <span th:unless="${mesa.disponible}" class="badge bg-danger">
+                                        <i class="bi bi-x-circle"></i> No Disponible
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <a th:href="@{/mesas/editar/{id}(id=${mesa.id})}" 
+                                       class="btn btn-edit btn-action me-2"
+                                       title="Editar mesa">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </a>
+                                    <a th:href="@{/mesas/cambiar-disponibilidad/{id}(id=${mesa.id})}" 
+                                       class="btn btn-action me-2"
+                                       th:classappend="${mesa.disponible} ? 'btn-delete' : 'btn-edit'"
+                                       title="Cambiar disponibilidad">
+                                        <i class="bi bi-toggle-on"></i> <span th:text="${mesa.disponible} ? 'Desactivar' : 'Activar'">Toggle</span>
+                                    </a>
+                                    <a th:href="@{/mesas/eliminar/{id}(id=${mesa.id})}" 
+                                       class="btn btn-delete btn-action"
+                                       onclick="return confirm('¿Está seguro de eliminar esta mesa?')"
+                                       title="Eliminar mesa">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(mesas)}">
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    <i class="bi bi-inbox" style="font-size: 3rem;"></i>
+                                    <p class="mt-2">No hay mesas registradas</p>
+                                    <a th:href="@{/mesas/nuevo}" class="btn-add">
+                                        <i class="bi bi-plus-circle"></i> Registrar Primera Mesa
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

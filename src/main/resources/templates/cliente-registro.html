@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Nuevo Cliente</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Estilos personalizados del restaurante -->
+    <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .registro-container {
+            max-width: 600px;
+            width: 100%;
+        }
+        .registro-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: white;
+        }
+        .form-control:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 0 0.25rem rgba(79, 172, 254, 0.25);
+        }
+        .btn-registro {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-registro:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(79, 172, 254, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="registro-container">
+        <!-- Mensajes Flash -->
+        <div th:if="${mensaje}" th:class="'alert alert-' + ${tipoMensaje} + ' alert-dismissible fade show mb-4'" role="alert">
+            <i class="bi" th:classappend="${tipoMensaje == 'success' ? 'bi-check-circle' : (tipoMensaje == 'danger' ? 'bi-exclamation-triangle' : 'bi-info-circle')}"></i>
+            <span th:text="${mensaje}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="registro-card fade-in">
+            <div class="header-icon">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+            <h2 class="text-center mb-2" style="color: #4facfe;">Registro de Cliente</h2>
+            <p class="text-center text-muted mb-4">Complete sus datos para crear su cuenta</p>
+
+            <form th:action="@{/clientes/guardar-registro}" th:object="${cliente}" method="post">
+                <!-- RUT -->
+                <div class="mb-3">
+                    <label for="rut" class="form-label">
+                        <i class="bi bi-card-text"></i> RUT
+                    </label>
+                    <input type="text" 
+                           class="form-control form-control-lg" 
+                           id="rut" 
+                           th:field="*{rut}" 
+                           placeholder="12.345.678-9"
+                           required
+                           readonly>
+                    <small class="text-muted">
+                        <i class="bi bi-info-circle"></i> Este es el RUT que ingresó para iniciar sesión
+                    </small>
+                </div>
+                
+                <!-- Nombre Completo -->
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">
+                        <i class="bi bi-person-fill"></i> Nombre Completo
+                    </label>
+                    <input type="text" 
+                           class="form-control form-control-lg" 
+                           id="nombre" 
+                           th:field="*{nombre}" 
+                           placeholder="Ingrese su nombre completo"
+                           required
+                           autofocus>
+                </div>
+                
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <i class="bi bi-envelope-fill"></i> Correo Electrónico
+                    </label>
+                    <input type="email" 
+                           class="form-control form-control-lg" 
+                           id="email" 
+                           th:field="*{email}" 
+                           placeholder="ejemplo@correo.com"
+                           required>
+                </div>
+                
+                <!-- Teléfono -->
+                <div class="mb-4">
+                    <label for="telefono" class="form-label">
+                        <i class="bi bi-telephone-fill"></i> Teléfono (Opcional)
+                    </label>
+                    <input type="text" 
+                           class="form-control form-control-lg" 
+                           id="telefono" 
+                           th:field="*{telefono}" 
+                           placeholder="+56912345678">
+                </div>
+
+                <!-- Botones -->
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-registro btn-lg">
+                        <i class="bi bi-check-circle"></i> Completar Registro
+                    </button>
+                    <a th:href="@{/}" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-arrow-left"></i> Volver al Inicio
+                    </a>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <small class="text-muted">
+                    <i class="bi bi-shield-check"></i> Sus datos están protegidos
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
