@@ -45,17 +45,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- NO USAR - Causa duplicados al reiniciar con data.sql -->
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		-->
+		
+		<!-- NO NECESARIO - Usamos H2 en memoria -->
+		<!--
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		-->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,6 +71,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- NECESARIO - Base de datos H2 en memoria -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

@@ -1,6 +1,7 @@
 package eva2.eva2.controllers;
 
 import eva2.eva2.models.Cliente;
+import eva2.eva2.models.Mesa;
 import eva2.eva2.models.Reserva;
 import eva2.eva2.services.ClienteService;
 import eva2.eva2.services.MesaService;
@@ -56,21 +57,26 @@ public class ReservaController {
             RedirectAttributes redirectAttributes) {
         
         try {
-            reservaService.crearReserva(clienteId, mesaId, fechaHora);
-            redirectAttributes.addFlashAttribute("mensaje", "Reserva creada exitosamente");
+            // Obtener cliente y mesa
+            Cliente cliente = clienteService.obtenerClientePorId(clienteId)
+                    .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
+            
+            Mesa mesa = mesaService.obtenerMesaPorId(mesaId)
+                    .orElseThrow(() -> new IllegalArgumentException("Mesa no encontrada"));
+            
+            // Crear y guardar reserva
+            Reserva reserva = new Reserva();
+            reserva.setCliente(cliente);
+            reserva.setMesa(mesa);
+            reserva.setFechaHora(fechaHora);
+            
+            reservaService.guardarReserva(reserva);
+            
+            redirectAttributes.addFlashAttribute("mensaje", "Reserva guardada exitosamente");
             redirectAttributes.addFlashAttribute("tipoMensaje", "success");
-        } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("mensaje", e.getMessage());
-            redirectAttributes.addFlashAttribute("tipoMensaje", "warning");
-            return "redirect:/reservas/nuevo";
-        } catch (IllegalStateException e) {
-            redirectAttributes.addFlashAttribute("mensaje", e.getMessage());
-            redirectAttributes.addFlashAttribute("tipoMensaje", "danger");
-            return "redirect:/reservas/nuevo";
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("mensaje", "Error al crear la reserva: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("mensaje", "Error al guardar: " + e.getMessage());
             redirectAttributes.addFlashAttribute("tipoMensaje", "danger");
-            return "redirect:/reservas/nuevo";
         }
         
         return "redirect:/reservas";

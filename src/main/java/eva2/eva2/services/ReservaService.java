@@ -279,4 +279,8 @@ public class ReservaService {
         LocalDateTime en24Horas = ahora.plusHours(24);
         return reservaRepository.findByFechaHoraBetween(ahora, en24Horas);
     }
+
+    public Reserva guardarReserva(Reserva reserva) {
+        return reservaRepository.save(reserva);
+    }
 }

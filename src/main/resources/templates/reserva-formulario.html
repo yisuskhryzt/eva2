@@ -84,15 +84,13 @@
                 <p class="mb-0">Complete los datos de la reserva</p>
             </div>
             <div class="card-body p-4">
-                <form th:action="@{/reservas/guardar}" th:object="${reserva}" method="post">
-                    <input type="hidden" th:field="*{id}" />
-                    
+                <form th:action="@{/reservas/guardar}" method="post">
                     <!-- Selección de Cliente -->
                     <div class="mb-4">
-                        <label for="cliente" class="form-label" style="color: #43e97b; font-weight: 600;">
+                        <label for="clienteId" class="form-label" style="color: #43e97b; font-weight: 600;">
                             <i class="bi bi-person"></i> Cliente
                         </label>
-                        <select class="form-select" id="cliente" th:field="*{cliente.id}" required>
+                        <select class="form-select" id="clienteId" name="clienteId" required>
                             <option value="">Seleccione un cliente...</option>
                             <option th:each="c : ${clientes}" 
                                     th:value="${c.id}" 
@@ -100,17 +98,14 @@
                                 Cliente
                             </option>
                         </select>
-                        <div class="form-text">
-                            <i class="bi bi-info-circle"></i> Seleccione el cliente que realizará la reserva
-                        </div>
                     </div>
 
                     <!-- Selección de Mesa -->
                     <div class="mb-4">
-                        <label for="mesa" class="form-label" style="color: #43e97b; font-weight: 600;">
+                        <label for="mesaId" class="form-label" style="color: #43e97b; font-weight: 600;">
                             <i class="bi bi-table"></i> Mesa
                         </label>
-                        <select class="form-select" id="mesa" th:field="*{mesa.id}" required>
+                        <select class="form-select" id="mesaId" name="mesaId" required>
                             <option value="">Seleccione una mesa...</option>
                             <option th:each="m : ${mesas}" 
                                     th:value="${m.id}" 
@@ -118,9 +113,6 @@
                                 Mesa
                             </option>
                         </select>
-                        <div class="form-text">
-                            <i class="bi bi-info-circle"></i> Solo se muestran mesas disponibles
-                        </div>
                     </div>
 
                     <!-- Fecha y Hora -->
@@ -131,18 +123,14 @@
                         <input type="datetime-local" 
                                class="form-control" 
                                id="fechaHora" 
-                               th:field="*{fechaHora}" 
+                               name="fechaHora" 
                                required>
-                        <div class="form-text">
-                            <i class="bi bi-info-circle"></i> Seleccione la fecha y hora de la reserva (las reservas pueden hacerse hasta con 3 meses de anticipación)
-                        </div>
                     </div>
 
                     <!-- Botones de Acción -->
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; font-weight: 600; border: none;">
-                            <i class="bi bi-save"></i>
-                            <span th:text="${reserva.id != null ? 'Actualizar' : 'Guardar'} + ' Reserva'">Guardar Reserva</span>
+                            <i class="bi bi-save"></i> Guardar Reserva
                         </button>
                         
                         <a th:href="@{/reservas}" class="btn btn-outline-secondary btn-lg">
