@@ -113,4 +113,4 @@ Se ejecuta una sola vez al iniciar si la tabla de clientes está vacía. Carga:
 ## 📸 Capturas de Pantalla
 
 ### Panel Principal
-![Dashboard](docs/screenshots/1.png)
+![Dashboard](docs/1.png)
