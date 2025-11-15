@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
     <style>
         body {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background-color: #ecf0f1;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -37,24 +37,30 @@
             margin-bottom: 20px;
         }
         .admin-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border: 3px solid white;
+            background: white;
+            color: #2c3e50;
+            border: 3px solid #e67e22;
         }
         .admin-card h2, .admin-card p {
-            color: white !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            font-weight: bold;
+            color: #2c3e50 !important;
+            font-weight: 600;
+        }
+        .admin-card .role-icon {
+            color: #e67e22;
         }
         .cliente-card {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
+            background: white;
+            color: #2c3e50;
+            border: 3px solid #16a085;
+        }
             border: 3px solid white;
         }
         .cliente-card h2, .cliente-card p {
-            color: white !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            font-weight: bold;
+            color: #2c3e50 !important;
+            font-weight: 600;
+        }
+        .cliente-card .role-icon {
+            color: #16a085;
         }
         .form-control-lg {
             padding: 15px;

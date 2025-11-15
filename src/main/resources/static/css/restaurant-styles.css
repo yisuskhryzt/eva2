@@ -1,11 +1,29 @@
+/* Paleta de colores profesional y moderna */
+:root {
+    --primary-color: #2c3e50;        /* Azul oscuro profesional */
+    --primary-light: #34495e;        /* Azul oscuro claro */
+    --accent-teal: #16a085;          /* Teal profesional */
+    --accent-blue: #3498db;          /* Azul moderno */
+    --accent-orange: #e67e22;        /* Naranja profesional */
+    --background-color: #ecf0f1;     /* Gris claro */
+    --surface-color: #ffffff;        /* Blanco puro */
+    --text-primary: #2c3e50;         /* Texto oscuro */
+    --text-secondary: #7f8c8d;       /* Texto gris */
+    --border-color: #bdc3c7;         /* Borde gris */
+    --success-color: #27ae60;         /* Verde profesional */
+    --warning-color: #e67e22;         /* Naranja profesional */
+    --danger-color: #e74c3c;          /* Rojo profesional */
+}
+
 /* Estilos generales del restaurante */
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: var(--background-color);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
 }
 
 /* Contenedor de tarjetas */
@@ -18,13 +36,14 @@ body {
 /* Estilos de tarjeta */
 .card {
     border: none;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    background-color: var(--surface-color);
 }
 
 .card-header {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-color: var(--primary-color);
     color: white;
     padding: 30px;
     text-align: center;
@@ -33,9 +52,10 @@ body {
 
 .card-header h1 {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 600;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+    color: white;
 }
 
 .card-header .restaurant-icon {
@@ -45,41 +65,44 @@ body {
 
 .card-body {
     padding: 40px;
-    background-color: #02af59;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
 }
 
 /* Estilos de formularios */
 .form-label {
-    color: #f5576c;
+    color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 8px;
 }
 
 .form-control {
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     padding: 12px 15px;
     transition: all 0.3s ease;
+    background-color: var(--surface-color);
 }
 
 .form-control:focus {
-    border-color: #f5576c;
-    box-shadow: 0 0 0 0.2rem rgba(245, 87, 108, 0.25);
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 0.2rem rgba(22, 160, 133, 0.15);
+    background-color: var(--surface-color);
 }
 
 .input-group-text {
-    background-color: #f5576c;
-    color: white;
-    border: none;
-    border-radius: 10px 0 0 10px;
+    background-color: var(--background-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px 0 0 8px;
 }
 
 /* Estilos de botones */
 .btn-submit {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-color: var(--accent-teal);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 30px;
     font-weight: 600;
     width: 100%;
@@ -88,16 +111,17 @@ body {
 }
 
 .btn-submit:hover {
+    background-color: #1e7e74;
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.3);
     color: white;
 }
 
 .btn-back {
-    background-color: #6c757d;
+    background-color: var(--text-secondary);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 30px;
     font-weight: 600;
     width: 100%;
@@ -109,7 +133,7 @@ body {
 }
 
 .btn-back:hover {
-    background-color: #5a6268;
+    background-color: var(--primary-light);
     transform: translateY(-2px);
     color: white;
 }
@@ -158,32 +182,34 @@ body {
 }
 
 .btn-edit {
-    background-color: #ffc107;
-    color: #000;
+    background-color: var(--warning-color);
+    color: white;
     border: none;
 }
 
 .btn-edit:hover {
-    background-color: #ffb300;
-    transform: scale(1.05);
+    background-color: #d35400;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(230, 126, 34, 0.3);
 }
 
 .btn-delete {
-    background-color: #dc3545;
+    background-color: var(--danger-color);
     color: white;
     border: none;
 }
 
 .btn-delete:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
 }
 
 .btn-add {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-color: var(--accent-teal);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 25px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -192,16 +218,41 @@ body {
 }
 
 .btn-add:hover {
+    background-color: #1e7e74;
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.3);
     color: white;
 }
 
 /* Estilos para mensajes */
 .alert-custom {
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    border-left: 4px solid #27ae60;
+}
+
+.alert-warning {
+    background-color: rgba(230, 126, 34, 0.1);
+    color: #e67e22;
+    border-left: 4px solid #e67e22;
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border-left: 4px solid #e74c3c;
+}
+
+.alert-info {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    border-left: 4px solid #3498db;
 }
 
 /* Animaciones */

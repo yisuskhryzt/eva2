@@ -12,24 +12,24 @@
     <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
     <style>
         body {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background-color: #f8f9fa;
             min-height: 100vh;
             padding-top: 80px;
         }
         .navbar-custom {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background-color: #2c3e50 !important;
+            backdrop-filter: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .navbar-custom .navbar-brand {
-            color: #f093fb !important;
+            color: white !important;
             font-weight: bold;
             font-size: 1.3rem;
         }
         .badge-profile {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-color: #16a085;
             padding: 8px 20px;
-            border-radius: 25px;
+            border-radius: 8px;
             font-size: 1rem;
             color: white;
         }
@@ -75,9 +75,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
 
-        <div class="card" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-            <div class="card-header text-center py-4" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 20px 20px 0 0;">
-                <div style="font-size: 3rem; margin-bottom: 10px;">
+        <div class="card" style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <div class="card-header text-center py-4" style="background-color: #2c3e50; color: white; border-radius: 8px 8px 0 0;">
+                <div style="font-size: 2.5rem; margin-bottom: 10px;">
                     <i class="bi bi-people-fill"></i>
                 </div>
                 <h1 class="mb-1">Clientes del Restaurante</h1>
@@ -85,7 +85,7 @@
             </div>
             <div class="card-body p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="mb-0" style="color: #f093fb;">
+                    <h5 class="mb-0" style="color: #2c3e50ff;">
                         <i class="bi bi-list-ul"></i> Lista de Clientes
                     </h5>
                     <a th:href="@{/clientes/nuevo}" class="btn-add">

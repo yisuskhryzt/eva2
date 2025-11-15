@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/restaurant-styles.css}">
     <style>
         body {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background-color: #ecf0f1;
             min-height: 100vh;
         }
         .navbar-custom {
@@ -21,12 +21,13 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         .navbar-custom .navbar-brand {
-            color: #4facfe !important;
+            color: #2c3e50 !important;
             font-weight: bold;
             font-size: 1.3rem;
         }
         .badge-profile {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-color: #e67e22;
+            color: white;
             padding: 8px 20px;
             border-radius: 25px;
             font-size: 1rem;
@@ -55,15 +56,15 @@
             font-size: 3rem;
         }
         .clientes-circle {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-color: #e67e22;
             color: white;
         }
         .mesas-circle {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background-color: #3498db;
             color: white;
         }
         .reservas-circle {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background-color: #16a085;
             color: white;
         }
         .card-title-custom {
@@ -79,15 +80,15 @@
             transition: all 0.3s ease;
         }
         .btn-clientes {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-color: #e67e22;
             color: white;
         }
         .btn-mesas {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background-color: #3498db;
             color: white;
         }
         .btn-reservas {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background-color: #16a085;
             color: white;
         }
         .btn-custom:hover {
@@ -125,11 +126,11 @@
 
     <div class="container my-5" style="margin-top: 100px !important;">
         <!-- Título del Dashboard -->
-        <div class="text-center text-white mb-5 fade-in">
-            <h1 class="display-4 fw-bold mb-3">
+        <div class="text-center mb-5 fade-in">
+            <h1 class="display-4 fw-bold mb-3" style="color: #2c3e50;">
                 <i class="bi bi-speedometer2"></i> Panel de Administración
             </h1>
-            <p class="lead">Gestiona tu restaurante de forma eficiente</p>
+            <p class="lead" style="color: #34495e;">Gestiona tu restaurante de forma eficiente</p>
         </div>
 
         <!-- Cards de Gestión -->
@@ -140,7 +141,7 @@
                     <div class="icon-circle clientes-circle">
                         <i class="bi bi-people-fill"></i>
                     </div>
-                    <h3 class="card-title-custom" style="color: #f5576c;">Clientes</h3>
+                    <h3 class="card-title-custom" style="color: #e67e22;">Clientes</h3>
                     <p class="text-muted mb-3">Gestiona la base de clientes registrados</p>
                     <div class="mb-4">
                         <span class="badge bg-light text-dark" style="font-size: 1.1rem; padding: 10px 20px;">
@@ -159,7 +160,7 @@
                     <div class="icon-circle mesas-circle">
                         <i class="bi bi-table"></i>
                     </div>
-                    <h3 class="card-title-custom" style="color: #4facfe;">Mesas</h3>
+                    <h3 class="card-title-custom" style="color: #3498db;">Mesas</h3>
                     <p class="text-muted mb-3">Administra las mesas del restaurante</p>
                     <div class="mb-4">
                         <span class="badge bg-light text-dark" style="font-size: 1.1rem; padding: 10px 20px;">
@@ -178,7 +179,7 @@
                     <div class="icon-circle reservas-circle">
                         <i class="bi bi-calendar-check-fill"></i>
                     </div>
-                    <h3 class="card-title-custom" style="color: #43e97b;">Reservas</h3>
+                    <h3 class="card-title-custom" style="color: #16a085;">Reservas</h3>
                     <p class="text-muted mb-3">Gestiona todas las reservas del sistema</p>
                     <div class="mb-4">
                         <span class="badge bg-light text-dark" style="font-size: 1.1rem; padding: 10px 20px;">
