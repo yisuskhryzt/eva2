@@ -9,6 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+//lo servicios permiten la logica de negocio entre el controlador y el repositorio
+//por esto se entiende que es el intermediario entre ambos
+//aqui se realizan las validaciones necesarias antes de enviar los datos al repositorio
+//se relacionan con el repositorio para acceder a los datos y con el controlador para procesar las solicitudes
+
+
 @Service
 @Transactional
 public class ClienteService {

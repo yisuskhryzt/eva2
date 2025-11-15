@@ -10,6 +10,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
+//los controladores manejan las solicitudes HTTP entrantes y devuelven respuestas HTTP
+//en este caso, el controlador gestiona las operaciones CRUD para la entidad Cliente
+//se relacionan con las vistas (HTML) para mostrar los datos al usuario y con el servicio para procesar la logica de negocio
+
+
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {

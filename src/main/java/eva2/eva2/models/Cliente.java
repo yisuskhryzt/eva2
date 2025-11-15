@@ -7,6 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+//el modelo permite escribir en la base de datos mediante JPA (Java Persistence API)
+//se relacionan con los repositorios para definir las entidades con las que se trabajara en la base de datos
+
+
 @Entity
 public class Cliente {
 
