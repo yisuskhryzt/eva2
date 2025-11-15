@@ -112,41 +112,57 @@ Se ejecuta una sola vez al iniciar si la tabla de clientes está vacía. Carga:
 
 ## 📸 Capturas de Pantalla
 
-### 🔐 Pantalla de Login
 ![Login Principal](docs/1.png)
 
-### 👨‍💼 Panel Administrador
 ![Admin Dashboard](docs/2.png)
 
-### 👤 Panel Cliente
 ![Cliente Dashboard](docs/3.png)
 
-### 👥 Gestión de Clientes
 ![Clientes Lista](docs/4.png)
 
-### 🍽️ Gestión de Mesas
 ![Mesas Lista](docs/5.png)
 
-### 📋 Funcionalidades Adicionales
 ![Captura 1](docs/Captura%20de%20pantalla%202025-11-15%20173148.png)
+
 ![Captura 2](docs/Captura%20de%20pantalla%202025-11-15%20173154.png)
+
 ![Captura 3](docs/Captura%20de%20pantalla%202025-11-15%20173158.png)
+
 ![Captura 4](docs/Captura%20de%20pantalla%202025-11-15%20173209.png)
+
 ![Captura 5](docs/Captura%20de%20pantalla%202025-11-15%20173223.png)
+
 ![Captura 6](docs/Captura%20de%20pantalla%202025-11-15%20173227.png)
+
 ![Captura 7](docs/Captura%20de%20pantalla%202025-11-15%20173234.png)
+
 ![Captura 8](docs/Captura%20de%20pantalla%202025-11-15%20173243.png)
+
 ![Captura 9](docs/Captura%20de%20pantalla%202025-11-15%20173301.png)
+
 ![Captura 10](docs/Captura%20de%20pantalla%202025-11-15%20173316.png)
+
 ![Captura 11](docs/Captura%20de%20pantalla%202025-11-15%20173320.png)
+
 ![Captura 12](docs/Captura%20de%20pantalla%202025-11-15%20173331.png)
+
 ![Captura 13](docs/Captura%20de%20pantalla%202025-11-15%20173346.png)
+
 ![Captura 14](docs/Captura%20de%20pantalla%202025-11-15%20173353.png)
+
 ![Captura 15](docs/Captura%20de%20pantalla%202025-11-15%20173539.png)
+
 ![Captura 16](docs/Captura%20de%20pantalla%202025-11-15%20173546.png)
+
 ![Captura 17](docs/Captura%20de%20pantalla%202025-11-15%20173559.png)
+
 ![Captura 18](docs/Captura%20de%20pantalla%202025-11-15%20173602.png)
+
 ![Captura 19](docs/Captura%20de%20pantalla%202025-11-15%20173718.png)
+
 ![Captura 20](docs/Captura%20de%20pantalla%202025-11-15%20173730.png)
+
 ![Captura 21](docs/Captura%20de%20pantalla%202025-11-15%20173739.png)
+
+Captura donde se evidencia el funcionamiento de la APP
 ![Captura 22](docs/Captura%20de%20pantalla%202025-11-15%20174117.png)
