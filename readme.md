@@ -1,6 +1,5 @@
 # 🍽️ Sistema de Reservas - Sabor Gourmet
 
-Aplicación web para gestionar reservas de restaurante con roles de administrador y cliente.
 
 ## ✨ Características Principales
 
@@ -110,3 +109,8 @@ Se ejecuta una sola vez al iniciar si la tabla de clientes está vacía. Carga:
 - 8 mesas
 - 5 reservas de muestra
 ---
+
+## 📸 Capturas de Pantalla
+
+### Panel Principal
+![Dashboard](docs/screenshots/1.png)
