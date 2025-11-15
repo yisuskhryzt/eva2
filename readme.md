@@ -37,7 +37,7 @@ cd eva2
 
 ### 2. Compilar
 ```bash
-.
+./mvnw clean install
 ```
 
 ### 3. Ejecutar
@@ -45,12 +45,8 @@ cd eva2
 ./mvnw spring-boot:run
 ```
 
-O ejecutar desde VS Code:
-- Presionar `F5` o usar el terminal integrado
-
 ### 4. Acceder
 - **URL**: http://localhost:8080
-- **H2 Console**: http://localhost:8080/h2-console
 
 ## 🔐 Credenciales
 
